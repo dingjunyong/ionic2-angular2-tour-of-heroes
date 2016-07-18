@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{ title }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>My Heroes</h2>
+  <ion-list class="heroes">
+    <ion-item *ngFor="let hero of heroes"  (click)="onSelect(hero)"  [class.selected]="hero === selectedHero">
+      <ion-badge class="badge">{{ hero.id }}</ion-badge>
+      {{ hero.name }}
+    </ion-item>
+  </ion-list>
+  <div *ngIf="selectedHero">
+    <h2>{{selectedHero.name}} details!</h2>
+    <div padding>
+      <ion-lable>id:</ion-lable>
+      {{selectedHero.id}}
+    </div>
+    <div padding>
+      <ion-lable>name:</ion-lable>
+      <ion-input [(ngModel)] = "selectedHero.name" type = "text" placeholder = "name"></ion-input>
+    </div>
+  </div>
+</ion-content>
